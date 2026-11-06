@@ -1,10 +1,12 @@
 # Building Footprint Mapper
 
-A small, self-contained browser app for tracing building footprints, recording building details, and exporting a GeoJSON FeatureCollection.
+A browser app for tracing building footprints on Google satellite imagery, recording building details, and exporting a GeoJSON FeatureCollection.
 
 ## Run it
 
-Open `index.html` in a modern browser. The mapper uses a local schematic map preview, so it does not need an API key, account, install step, or network connection.
+Serve the folder over HTTP or HTTPS and open `index.html` in a modern browser. The page loads Google Maps JavaScript API directly; no build or install step is needed. The Maps JavaScript API must be enabled for the Google Cloud project, with billing configured.
+
+The key is read from `config/config.js`. This is a plain HTML/JavaScript app, so Next.js environment variable names such as `NEXT_PUBLIC_GOOGLE_API_KEY` are not read automatically. The browser key is visible to site visitors; restrict it to your deployed site's HTTP referrers and to the Maps JavaScript API in Google Cloud Console.
 
 ## Use it
 
@@ -14,12 +16,12 @@ Open `index.html` in a modern browser. The mapper uses a local schematic map pre
 4. Drag a selected footprint's white corner handles to adjust the outline.
 5. Choose **Download GeoJSON** to save all buildings as a GeoJSON FeatureCollection.
 
-The map preview is a visual reference rather than live imagery. Coordinates are estimated around the Ludhiana reference point in `config/config.js`; use a georeferenced map and a suitable projection for survey-grade measurements.
+The initial view is centered on Ludhiana, Punjab. Drawing areas and exported coordinates use the map's geographic positions.
 
 ## Files
 
 - `index.html` — page structure and controls.
 - `css/style.css` — responsive dark interface.
-- `js/app.js` — map preview, polygon drawing/editing, building details, and GeoJSON export.
-- `config/config.js` — reference point and approximate drawing scale.
+- `js/app.js` — Google Maps loading, polygon drawing/editing, building details, and GeoJSON export.
+- `config/config.js` — Maps API key and default map position/zoom.
 - `exports/` — suggested place to save exported GeoJSON files.

@@ -11,10 +11,10 @@
 <body>
   <main id="app">
     <section id="map-wrap" aria-label="Building footprint map">
-      <canvas id="map" aria-label="Interactive map. Draw a polygon to trace a building."></canvas>
-      <div id="map-badge"><span class="badge-dot"></span>Map preview</div>
+      <div id="map" aria-label="Google satellite map. Draw a polygon to trace a building."></div>
+      <div id="map-badge"><span class="badge-dot"></span>SatelliteMap</div>
       <div id="hint" role="status">Click each corner of the building. Double-click to finish.</div>
-      <div id="map-credit">Local map preview · Ludhiana, Punjab</div>
+      <div id="map-error" role="alert" hidden></div>
     </section>
 
     <aside id="panel" aria-label="Building mapper controls">
@@ -24,7 +24,7 @@
       </header>
 
       <div id="toolbar">
-        <button id="draw-btn" type="button"><span class="button-icon">＋</span>Draw building</button>
+        <button id="draw-btn" type="button" disabled><span class="button-icon">＋</span>Draw building</button>
         <button id="clear-btn" type="button">Clear all</button>
       </div>
 
