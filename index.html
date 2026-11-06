@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#141917">
+  <meta name="description" content="Trace building footprints and export their details as GeoJSON.">
+  <title>Building Footprint Mapper</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main id="app">
+    <section id="map-wrap" aria-label="Building footprint map">
+      <canvas id="map" aria-label="Interactive map. Draw a polygon to trace a building."></canvas>
+      <div id="map-badge"><span class="badge-dot"></span>Map preview</div>
+      <div id="hint" role="status">Click each corner of the building. Double-click to finish.</div>
+      <div id="map-credit">Local map preview · Ludhiana, Punjab</div>
+    </section>
+
+    <aside id="panel" aria-label="Building mapper controls">
+      <header id="panel-header">
+        <h1>Building Footprint Mapper</h1>
+        <p>Trace building outlines on the map and export them as GeoJSON.</p>
+      </header>
+
+      <div id="toolbar">
+        <button id="draw-btn" type="button"><span class="button-icon">＋</span>Draw building</button>
+        <button id="clear-btn" type="button">Clear all</button>
+      </div>
+
+      <section id="shape-list" aria-label="Traced buildings" aria-live="polite">
+        <div class="empty-state" id="empty-state">
+          <div class="empty-icon">⌖</div>
+          <strong>No buildings traced yet</strong>
+          <span>Choose “Draw building”, then click around a rooftop.</span>
+        </div>
+      </section>
+
+      <footer id="export-bar">
+        <button id="export-btn" type="button" disabled><span>Download GeoJSON</span><span class="download-icon">↓</span></button>
+        <div id="count-line">0 buildings traced</div>
+      </footer>
+    </aside>
+  </main>
+  <script src="config/config.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
